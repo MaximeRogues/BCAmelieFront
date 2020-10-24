@@ -1,0 +1,48 @@
+<h2 class="font-weight-light text-center title">Tout savoir sur...</h2>
+
+<a class="btn btn-outline-danger" [routerLink]="['/annonces/list']">Revenir à ma sélection</a>
+
+
+<div *ngIf="!isLoading" class="container">
+
+
+  <div class="container mt-3">
+    <div id="bootstrapCarousel" class="carousel slide" data-ride="carousel" data-interval="10">
+      <div class="carousel-inner">
+
+        <div class="carousel-item active text-center">
+          <img
+            src="https://images.unsplash.com/photo-1571366343168-631c5bcca7a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+            width="1100" height="500">
+        </div>
+        
+       
+        <h5 class="card-title">{{ annonces.titre }}</h5>
+       
+        <br>
+        <p>Petite description pour en savoir plus: <br> {{ annonces.descriptionComplete}}</p>
+        <br>
+        <p>Lieu de retrait: {{ annonces.lieuRetrait}}</p>
+        <p>Lieu de restitution: {{ annonces.lieuRestitution}}</p>
+        <br>
+        <p>Type de véhicule: {{ annonces.typeVehicule.nom }}</p>
+        <p>Nombre de roues: {{ annonces.typeVehicule.nbrRoues}}</p>
+        <p>A moteur: {{ annonces.typeVehicule.aMoteur}}</p>
+        <p>Carburant: {{ annonces.carburant.nom }}</p>
+        <p>Modèle:{{ annonces.modele.nom }}</p>
+       
+        <br>
+        
+
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isLoading">
+    Patience, patience, ça charge....!!
+  </div>

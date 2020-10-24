@@ -1,0 +1,39 @@
+
+  <div>
+    
+    <div class="card-group">
+        <img src="https://cdn.pixabay.com/photo/2018/04/07/16/30/auto-3298890_960_720.jpg" class="card-img-top " style=" opacity:0.8" alt="photo voiture">
+    </div>
+   
+</div>
+
+<!-- Page Content -->
+<section class="py-5">
+  <div class="container">
+    <h1 class="font-weight-light text-center title">Annonces</h1>
+  </div>
+</section>
+
+<a class="btn btn-outline-danger btn-ajout" [routerLink]="['/annonces/add']">Ajouter une annonce</a>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let annonce of annonces" class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <img src="https://source.unsplash.com/TMgQMXoglsM/500x350" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h3 class="card-title mb-0">{{ annonce.titre }}</h3><br>
+          <p> {{annonce.dateCreation | date: "dd/MM/yyyy"}}</p>
+          <div class="card-text prixJour">{{ annonce.prixJourLocation}} € / jour</div>
+        
+        <a class="btn btn-outline-danger" [routerLink]="['/annonces/detail', annonce.id]">En savoir plus</a>
+        <a class="btn btn-outline-danger" [routerLink]="['/annonces/edit', annonce.id]">Modifier</a> 
+        <a class="btn btn-outline-danger" (click)="deleteAnnonce(annonce.id)">Supprimer</a> 
+        
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>  
+
+
