@@ -1,18 +1,22 @@
-<p>formulaire ajout annonce</p>
+<app-menu></app-menu>
 
-<h1>Modifier une annonce</h1>
+<h1 class="text-center">Modification d'une annonce</h1>
 
 <!-- s'affiche au chargement -->
 <div *ngIf="isLoading">
-  <h3 class="text-center">Veuillez Patienter</h3>
+  <div class="bouncing-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <!-- <h3 class="text-center">Veuillez Patienter</h3> -->
 </div>
 
 <!-- s'affiche une fois le component chargé -->
 <div *ngIf="!isLoading">
 
 
-  <button class="btn btn-outline-dark"><a [routerLink]="['/annonces/list']">Oups, pas d'annonce à
-      rajouter!</a></button>
+  <a class="animated-border-button" [routerLink]="['/annonces/list']">Oups, pas d'annonce à modifier!</a>
 
 
   <div class="container-fluid">
@@ -21,10 +25,7 @@
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-
-
-                <h3 class="login-heading mb-4">Hello</h3>
+              <div class="col-md-9 col-lg-10 text-center card border-0 shadow">
 
 
                 <form (submit)="editAnnonce()" #annonceForm="ngForm">
@@ -38,8 +39,6 @@
                     </div>
                   </div>
                   <br>
-
-
 
                   <div>
                     <label for="descriptionComplete">Description complète de votre annonce</label>

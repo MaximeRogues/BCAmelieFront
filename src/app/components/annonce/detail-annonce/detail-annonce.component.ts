@@ -21,11 +21,10 @@ export class DetailAnnonceComponent implements OnInit {
 
         // Affiche l'annonce selin l'id
       this.isLoading = true;
-      this.annonceService.getOneAnnonce(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe((data: Annonce) => {
+      this.annonceService.getOneAnnonce(+this.activatedRoute.snapshot.paramMap.get('id'))
+      .subscribe((data: Annonce) => {
         this.annonces = data;
         this.isLoading = false;
       });
   }
-
-
 }

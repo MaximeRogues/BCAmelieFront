@@ -10,7 +10,7 @@ import { MenuComponent } from './components/menu/menu.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
-  { path: '', component: MenuComponent },
+  { path: '', component: ListAnnonceComponent },
   { path: 'annonces/list', component: ListAnnonceComponent },
   { path: 'annonces/add', component: AddAnnonceComponent },
   { path: 'annonces/edit/:id', component: EditAnnonceComponent },

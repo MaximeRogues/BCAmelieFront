@@ -7,3 +7,123 @@
     margin-left: 3rem;
     font-size: 1.5rem;
 }
+
+p{
+    font-size: 1.2rem;
+}
+
+h3, img{
+    margin-top: 80px;
+}
+
+.prixJour{
+    color: #CC0303;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+@keyframes bg {
+    0% {
+        background-size:    0 3px,
+                            3px 0,
+                            0 3px,
+                            3px 0;
+    }
+    25% {
+        background-size:    100% 3px,
+                            3px 0,
+                            0 3px,
+                            3px 0;
+    }
+    50% {
+        background-size:    100% 3px,
+                            3px 100%,
+                            0 3px,
+                            3px 0;
+    }
+    75% {
+        background-size:    100% 3px,
+                            3px 100%,
+                            100% 3px,
+                            3px 0;
+    }
+    100% {
+        background-size:    100% 3px,
+                            3px 100%,
+                            100% 3px,
+                            3px 100%;
+    }
+}
+
+.bordure {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 2em;
+    
+    background-repeat: no-repeat;
+    background-image:   linear-gradient(to right, #cc0303 100%, #cc0303 100%),
+                        linear-gradient(to bottom, #cc0303 100%, #cc0303 100%),
+                        linear-gradient(to right, #cc0303 100%, #cc0303 100%),
+                        linear-gradient(to bottom, #cc0303 100%, #cc0303 100%);
+    background-size:    100% 3px,
+                        3px 100%,
+                        100% 3px,
+                        3px 100%;
+    background-position:    0 0,
+                            100% 0,
+                            100% 100%,
+                            0 100%;
+    animation: bg 1.25s cubic-bezier(0.19, 1, 0.22, 1) 1;
+    animation-play-state: paused;
+}
+
+.bordure:hover {
+    animation-play-state: running;
+}
+
+
+/* Bouton */
+
+.animated-border-button {
+    background-color: #CC0303;
+    border: none;
+    color: #ffffff;
+    outline: none;
+    padding: 20px 50px 20px;
+    position: relative;
+    
+  }
+  
+  .animated-border-button:before,
+  .animated-border-button:after {
+    border: 0 solid transparent;
+    transition: all 0.3s;
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 24px;
+  }
+  
+  .animated-border-button:before {
+    border-top: 2px solid #000;
+    right: 0;
+    top: -4px;
+  }
+  
+  .animated-border-button:after {
+    border-bottom: 2px solid #000;
+    bottom: -4px;
+    left: 0;
+  }
+  
+  .animated-border-button:hover:before,
+  .animated-border-button:hover:after {
+    width: 100%;
+  }
+
+
+  /* Background */
+.bloc1{
+    background: url(../../../../assets/images/texture-bloc.jpg) center top repeat;
+    padding-bottom: 300px;
+  }

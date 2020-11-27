@@ -14,6 +14,7 @@ import { ListMesAnnoncesComponent } from './components/mesAnnonces/list-mes-anno
 import { DetailMesAnnoncesComponent } from './components/mesAnnonces/detail-mes-annonces/detail-mes-annonces.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
+// import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -27,14 +28,14 @@ import { FooterComponent } from './components/footer/footer.component';
     DetailMesAnnoncesComponent,
     MenuComponent,
     FooterComponent,
-  
+    // ToastrModule.forRoot(),
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule, //Pour utiliser le serveur BACK END
-    FormsModule, //pour utiliser les formulaires
+    HttpClientModule,                         //Pour utiliser le serveur BACK END
+    FormsModule,                             //pour utiliser les formulaires
 
   ],
   providers: [],

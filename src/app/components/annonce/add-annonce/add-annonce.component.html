@@ -1,18 +1,22 @@
-<p>formulaire ajout annonce</p>
+<app-menu></app-menu>
 
-<h1>Ajout d'une annonce</h1>
+<h1 class="text-center">Ajout d'une annonce</h1>
 
 <!-- s'affiche au chargement -->
 <div *ngIf="isLoading">
   <h3 class="text-center">Veuillez Patienter</h3>
+  <div class="bouncing-loader">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
 </div>
 
 <!-- s'affiche une fois le component chargé -->
 <div *ngIf="!isLoading">
 
 
-  <button class="btn btn-outline-dark"><a [routerLink]="['/annonces/list']">Oups, pas d'annonce à
-      rajouter!</a></button>
+ <a class="animated-border-button" [routerLink]="['/annonces/list']">Oups, pas d'annonce à rajouter!</a>
 
 
   <div class="container-fluid">
@@ -21,11 +25,7 @@
         <div class="login d-flex align-items-center py-5">
           <div class="container">
             <div class="row">
-              <div class="col-md-9 col-lg-8 mx-auto">
-
-
-                <h3 class="login-heading mb-4">Hello</h3>
-
+              <div class="col-md-9 col-lg-10 text-center card border-0 shadow">
 
                 <form (submit)="addAnnonce()" #annonceForm="ngForm">
 
@@ -34,12 +34,10 @@
                     <input type="text" class="form-control" id="titre" name="titre" required [(ngModel)]="annonce.titre"
                       #titre="ngModel">
                     <div [hidden]="titre.valid" class="alert alert-warning">
-                      Merci de renseigner un titre svp
+                      Merci de renseigner un titre 
                     </div>
                   </div>
                   <br>
-
-
 
                   <div>
                     <label for="descriptionComplete">Description complète de votre annonce</label>
@@ -177,29 +175,29 @@
                   </div>
 
 
-                  <!-- image -->
+                  <!-- photo1 -->
                   <label for="photo1">Image 1</label>
-                  <input type="string" class="form-control" name="photo1" id="photo1" required
-                    [(ngModel)]="annonce.photo1" #photo1="ngModel"> <br>
-                  <!-- <div [hidden]="photo1.valid" class="alert alert-danger"> -->
-                  <!-- L'image est requise -->
-                  <!-- </div> -->
+                  <input type="file" class="form-control" name="photo1" id="photo1" required
+                       #photo1 (change)="onFileChange($event)"> <br>
+                  <div [hidden]="photo1.valid" class="alert alert-danger">
+                  L'image est requise
+                  </div>
 
-                  <!-- image -->
+                  <!-- photo2 -->
                   <label for="photo2">Image 2</label>
-                  <input type="string" class="form-control" name="photo2" id="photo2" required
-                    [(ngModel)]="annonce.photo2" #photo2="ngModel"> <br>
-                  <!-- <div [hidden]="photo2.valid" class="alert alert-danger"> -->
-                  <!-- L'image est requise -->
-                  <!-- </div> -->
+                  <input type="file" class="form-control" name="photo2" id="photo2" required
+                       #photo2 (change)="onFileChange($event)"> <br>
+                  <div [hidden]="photo2.valid" class="alert alert-danger">
+                  L'image est requise
+                  </div>
 
-                  <!-- image -->
+                  <!-- photo3 -->
                   <label for="photo3">Image 3</label>
-                  <input type="string" class="form-control" name="photo3" id="photo3" required
-                    [(ngModel)]="annonce.photo3" #photo3="ngModel"> <br>
-                  <!-- <div [hidden]="photo3.valid" class="alert alert-danger"> -->
-                  <!-- L'image est requise -->
-                  <!-- </div> -->
+                  <input type="file" class="form-control" name="photo3" id="photo3" required
+                       #photo3 (change)="onFileChange($event)"> <br>
+                  <div [hidden]="photo3.valid" class="alert alert-danger">
+                  L'image est requise
+                  </div>
 
 
                   <input class="btn-lg btn-outline-dark" [disabled]="!annonceForm.valid" id="submitAnnonce" type="submit" value="envoyer">

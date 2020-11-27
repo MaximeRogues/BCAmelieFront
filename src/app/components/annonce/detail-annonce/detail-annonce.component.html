@@ -1,48 +1,55 @@
-<h2 class="font-weight-light text-center title">Tout savoir sur...</h2>
-
-<a class="btn btn-outline-danger" [routerLink]="['/annonces/list']">Revenir à ma sélection</a>
+<app-menu></app-menu>
 
 
-<div *ngIf="!isLoading" class="container">
+<div class="bloc1">
+  <h2 class="font-weight-light text-center title">Tout savoir sur...</h2>
 
 
-  <div class="container mt-3">
-    <div id="bootstrapCarousel" class="carousel slide" data-ride="carousel" data-interval="10">
-      <div class="carousel-inner">
+  <div class="detailAnnonce">
+    <h3 class="card-title text-center">{{ annonces.titre }}</h3>
 
-        <div class="carousel-item active text-center">
-          <img
-            src="https://images.unsplash.com/photo-1571366343168-631c5bcca7a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
-            width="1100" height="500">
+    <div class="container mt-3">
+      <div id="bootstrapCarousel" class="carousel slide" data-ride="carousel" data-interval="10">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active text-center">
+            <img
+              src="https://images.unsplash.com/photo-1571366343168-631c5bcca7a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+              width="1100" height="500">
+          </div>
+
+          <div class=" bordure">
+
+            <br>
+
+            <p><strong>Petite description pour en savoir plus:</strong> <br> {{ annonces.descriptionComplete}}</p>
+            <br>
+
+            <p><strong>Lieu de retrait:</strong> {{ annonces.lieuRetrait}}</p>
+            <p><strong>Lieu de restitution:</strong> {{ annonces.lieuRestitution}}</p>
+
+            <br>
+            <p><strong>Marque: </strong>{{ annonces.modele.marque.nom }}</p>
+            <p><strong>Modèle: </strong>{{ annonces.modele.nom }}</p>
+            <p><strong>Nombre de km: </strong>{{ annonces.nombreDeKm }}</p>
+            <p><strong>Nombre de km: </strong>{{ annonces.anneeMiseEnCirculation }}</p>
+            <br>
+
+            <p><strong>Type de véhicule:</strong> {{ annonces.typeVehicule.nom }}</p>
+            <p><strong>Nombre de roues:</strong> {{ annonces.typeVehicule.nbrRoues}}</p>
+            <p><strong>A moteur:</strong> {{ annonces.typeVehicule.aMoteur}}</p>
+            <p><strong>Carburant:</strong> {{ annonces.carburant.nom }}</p>
+
+            <p class="text-center prixJour"><strong>Prix/Jour:</strong> {{ annonces.prixJourLocation }} €</p>
+
+          </div>
         </div>
-        
-       
-        <h5 class="card-title">{{ annonces.titre }}</h5>
-       
-        <br>
-        <p>Petite description pour en savoir plus: <br> {{ annonces.descriptionComplete}}</p>
-        <br>
-        <p>Lieu de retrait: {{ annonces.lieuRetrait}}</p>
-        <p>Lieu de restitution: {{ annonces.lieuRestitution}}</p>
-        <br>
-        <p>Type de véhicule: {{ annonces.typeVehicule.nom }}</p>
-        <p>Nombre de roues: {{ annonces.typeVehicule.nbrRoues}}</p>
-        <p>A moteur: {{ annonces.typeVehicule.aMoteur}}</p>
-        <p>Carburant: {{ annonces.carburant.nom }}</p>
-        <p>Modèle:{{ annonces.modele.nom }}</p>
-       
-        <br>
-        
 
-
-
-
+        <a class="animated-border-button" [routerLink]="['/annonces/list']">Revenir à ma sélection</a>
 
 
       </div>
     </div>
-  </div>
 
-  <div *ngIf="isLoading">
-    Patience, patience, ça charge....!!
   </div>
+</div>

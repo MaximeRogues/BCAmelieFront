@@ -8,6 +8,7 @@ import { ModeleService } from 'src/app/services/modele.service';
 import { TypeVehicule } from 'src/app/models/type-vehicule';
 import { TypeVehiculeService } from 'src/app/services/type-vehicule.service';
 import { Modele } from 'src/app/models/modele';
+import { UploadService } from 'src/app/services/upload.service';
 
 
 @Component({
@@ -22,9 +23,11 @@ export class AddAnnonceComponent implements OnInit {
   carburantList: Carburant[];  //récupère ma liste de carburant, pour les mettre dans un tableau
   modeleList: Modele[];
   typeVehiculeList: TypeVehicule[];
-  
+  file: File;
+  validPhoto: boolean = false;
+  validFileTypes = ["image/jpeg", "image/png", "image/jpg"];
 
-  constructor(private annonceService: AnnonceService, private router: Router, private carburantService: CarburantService, private modeleService: ModeleService, private typeVehiculeService: TypeVehiculeService, ) { }
+  constructor(private annonceService: AnnonceService, private router: Router, private carburantService: CarburantService, private modeleService: ModeleService, private typeVehiculeService: TypeVehiculeService, private upload:UploadService ) { }
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -45,12 +48,36 @@ export class AddAnnonceComponent implements OnInit {
     this.isLoading = false;
   }
 
+  onFileChange(event) {
+    this.file = event.target.files[0];
+    if(this.validFileTypes.includes(this.file.type)) {
+      this.validPhoto = true;
+    }
+  }
+
+
   addAnnonce(): void {
-      this.annonceService.addAnnonce(this.annonce).subscribe(data => {  
-      this.router.navigate(['/annonces/list']); // Redirection de l'utilisateur
+    if(this.file == undefined || this.file == null || !this.validFileTypes.includes(this.file.type) ) {
+      alert("Format d'image non valide, veuillez utiliser un fichier jpg ou png");
+      window.location.reload();
+      return;
+    }
+    let formData = new FormData();
+    formData.append('file', this.file);
+    this.annonce.photo1 = this.file.name;
+    
+    this.upload.uploadFile(formData);
+    this.annonceService.addAnnonce(this.annonce).subscribe(data => {  
+    this.router.navigate(['/annonces/list']); // Redirection de l'utilisateur
       // this.toastr.success("L'annonce a bien été ajoutée !"); // On affiche une notification
     });
   }
+
+
+
+
+
+
 
 
 }

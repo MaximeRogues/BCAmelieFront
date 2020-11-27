@@ -11,17 +11,14 @@ import { AnnonceService } from 'src/app/services/annonce.service';
 export class ListAnnonceComponent implements OnInit {
 
   annonces: Annonce[]; 
-  isLoading: boolean;   //afficher "chargement en cours", entre l'envoi de la requete et la réponse du serveur. (asynchrome)
+  isLoading: boolean;                                                                                                               //afficher "chargement en cours", entre l'envoi de la requete et la réponse du serveur. (asynchrome)
   
-
-
   constructor(private annonceService:AnnonceService, private router: Router) { }
 
-  //récupère la liste de mes carburants
   ngOnInit(): void {
     this.isLoading = true;
     this.annonceService.getAllAnnonces().subscribe(data => {
-      this.annonces = data['hydra:member'];   //Api plateform va stocker toutes les resultats dans hydra:member. on retrouve le hydra:member: dans la console
+      this.annonces = data['hydra:member'];                                                              //Api plateform va stocker toutes les resultats dans hydra:member. on retrouve le hydra:member: dans la console
       this.isLoading = false;
     });
   }
@@ -31,7 +28,8 @@ export class ListAnnonceComponent implements OnInit {
     this.annonceService.deleteAnnonce(id).subscribe(data => {
       this.router.navigate(['annonces/list']);  // on redirige l'utilisateur
   }); 
+  // this.toastr.success('Ajoutez un siège sur l\'Olympe !','Quoi ?! Un nouveau dieu !')
+}
    
-   }
 
 }
