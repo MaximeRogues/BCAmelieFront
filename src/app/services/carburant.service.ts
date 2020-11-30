@@ -9,7 +9,7 @@ import { Carburant } from '../models/carburant';
 })
 export class CarburantService {
 
-  apiUrl = 'http://localhost:8000/api/carburants';  //on rajoute notre apiUrl, on retrouve notre Url sur la doc de notre api plateforme
+  apiUrl = 'https://localhost:8000/api/carburants';  //on rajoute notre apiUrl, on retrouve notre Url sur la doc de notre api plateforme
   httpOptions = {
     headers: new HttpHeaders ({
       'Content-Type': 'application/json'

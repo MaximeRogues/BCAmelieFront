@@ -55,6 +55,8 @@ export class AddAnnonceComponent implements OnInit {
     if(this.validFileTypes.includes(this.file1.type)) {    //si validFileTypes est bon, alors on récupère le "file"
       this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
     }
+    console.log( this.file1);
+    
   }
 
   onFileChange2(event) {
@@ -62,6 +64,7 @@ export class AddAnnonceComponent implements OnInit {
     if(this.validFileTypes.includes(this.file2.type)) {    //si validFileTypes est bon, alors on récupère le "file"
       this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
     }
+    console.log( this.file2);
   }
 
   onFileChange3(event) {
@@ -69,6 +72,7 @@ export class AddAnnonceComponent implements OnInit {
     if(this.validFileTypes.includes(this.file3.type)) {    //si validFileTypes est bon, alors on récupère le "file"
       this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
     }
+    console.log( this.file3);
   }
 
   addAnnonce(): void {

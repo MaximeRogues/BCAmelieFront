@@ -9,7 +9,7 @@ import { Marque } from '../models/marque';
 })
 export class MarqueService {
 
-  apiUrl = 'http://localhost:8000/api/marques';  //on rajoute notre apiUrl, on retrouve notre Url sur la doc de notre api plateforme
+  apiUrl = 'https://localhost:8000/api/marques';  //on rajoute notre apiUrl, on retrouve notre Url sur la doc de notre api plateforme
   httpOptions = {
     headers: new HttpHeaders ({
       'Content-Type': 'application/json'
