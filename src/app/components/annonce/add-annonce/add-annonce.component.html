@@ -1,211 +1,226 @@
+<!-- navbar -->
 <app-menu></app-menu>
 
-<h1 class="text-center">Ajout d'une annonce</h1>
+<div class="bloc1">
+  <h1 class="text-center">Ajout d'une annonce</h1>
 
-<!-- s'affiche au chargement -->
-<div *ngIf="isLoading">
-  <h3 class="text-center">Veuillez Patienter</h3>
-  <div class="bouncing-loader">
-    <div></div>
-    <div></div>
-    <div></div>
+  <!-- s'affiche au chargement -->
+  <div *ngIf="isLoading">
+    <h3 class="text-center">Veuillez Patienter</h3>
+    <div class="bouncing-loader">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
   </div>
-</div>
 
-<!-- s'affiche une fois le component chargé -->
-<div *ngIf="!isLoading">
-
-
- <a class="animated-border-button" [routerLink]="['/annonces/list']">Oups, pas d'annonce à rajouter!</a>
+  <!-- s'affiche une fois le component chargé -->
+  <div *ngIf="!isLoading">
 
 
-  <div class="container-fluid">
-    <div class="row no-gutter">
-      <div class="col-md-8 col-lg-6">
-        <div class="login d-flex align-items-center py-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-9 col-lg-10 text-center card border-0 shadow">
+    <a class="animated-border-button btnRetour" [routerLink]="['/annonces/list']">Oups, pas d'annonce à rajouter!</a>
 
-                <form (submit)="addAnnonce()" #annonceForm="ngForm">
 
-                  <div>
-                    <label for="titre">Titre de votre annonce</label>
-                    <input type="text" class="form-control" id="titre" name="titre" required [(ngModel)]="annonce.titre"
-                      #titre="ngModel">
-                    <div [hidden]="titre.valid" class="alert alert-warning">
-                      Merci de renseigner un titre 
+    <div class="container-fluid">
+      <div class="row no-gutter">
+        <div class="col-md-8 col-lg-6">
+          <div class="login d-flex align-items-center py-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-9 col-lg-10 text-center card border-0 shadow">
+
+                  <form (submit)="addAnnonce()" #annonceForm="ngForm">
+
+                    <!-- titre -->
+                    <div>
+                      <label for="titre">Titre de votre annonce</label>
+                      <input type="text" class="form-control" id="titre" name="titre" required
+                        [(ngModel)]="annonce.titre" #titre="ngModel">
+                      <div [hidden]="titre.valid" class="alert alert-warning">
+                        Merci de renseigner un titre
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-                  <div>
-                    <label for="descriptionComplete">Description complète de votre annonce</label>
-                    <input type="text" class="form-control" id="descriptionComplete" name="descriptionComplete" required
-                      [(ngModel)]="annonce.descriptionComplete" #descriptionComplete="ngModel">
-                    <div [hidden]="descriptionComplete.valid" class="alert alert-warning">
-                      Merci de renseigner une description complète
+                    <!-- Description complète -->
+                    <div>
+                      <label for="descriptionComplete">Description complète de votre annonce</label>
+                      <input type="text" class="form-control" id="descriptionComplete" name="descriptionComplete"
+                        required [(ngModel)]="annonce.descriptionComplete" #descriptionComplete="ngModel">
+                      <div [hidden]="descriptionComplete.valid" class="alert alert-warning">
+                        Merci de renseigner une description complète
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-                  <div>
-                    <label for="anneeMiseEnCirculation">Année de mise en circulation</label>
-                    <input type="number" class="form-control" id="anneeMiseEnCirculation" name="anneeMiseEnCirculation"
-                      required [(ngModel)]="annonce.anneeMiseEnCirculation" #anneeMiseEnCirculation="ngModel">
-                    <div [hidden]="anneeMiseEnCirculation.valid" class="alert alert-warning">
-                      Merci de renseigner une année de mise en circulation
+                    <!-- Année Mise en Circulation -->
+                    <div>
+                      <label for="anneeMiseEnCirculation">Année de mise en circulation</label>
+                      <input type="number" class="form-control" id="anneeMiseEnCirculation"
+                        name="anneeMiseEnCirculation" required [(ngModel)]="annonce.anneeMiseEnCirculation"
+                        #anneeMiseEnCirculation="ngModel">
+                      <div [hidden]="anneeMiseEnCirculation.valid" class="alert alert-warning">
+                        Merci de renseigner une année de mise en circulation
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-                  <div>
-                    <label for="nombreDeKm">Nombre de kilomètre</label>
-                    <input type="number" class="form-control" id="nombreDeKm" name="nombreDeKm" required
-                      [(ngModel)]="annonce.nombreDeKm" #nombreDeKm="ngModel">
-                    <div [hidden]="nombreDeKm.valid" class="alert alert-warning">
-                      Merci de renseigner le nombre de kilomètre
+                    <!-- Nombre de km -->
+                    <div>
+                      <label for="nombreDeKm">Nombre de kilomètre</label>
+                      <input type="number" class="form-control" id="nombreDeKm" name="nombreDeKm" required
+                        [(ngModel)]="annonce.nombreDeKm" #nombreDeKm="ngModel">
+                      <div [hidden]="nombreDeKm.valid" class="alert alert-warning">
+                        Merci de renseigner le nombre de kilomètre
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-
-                  <div>
-                    <label for="lieuRetrait">Lieu de retrait du véhicule</label>
-                    <input type="text" class="form-control" id="lieuRetrait" name="lieuRetrait" required
-                      [(ngModel)]="annonce.lieuRetrait" #lieuRetrait="ngModel">
-                    <div [hidden]="lieuRetrait.valid" class="alert alert-warning">
-                      Merci de renseigner le lieu de retrait du véhicule
+                    <!-- Lieu de retrait -->
+                    <div>
+                      <label for="lieuRetrait">Lieu de retrait du véhicule</label>
+                      <input type="text" class="form-control" id="lieuRetrait" name="lieuRetrait" required
+                        [(ngModel)]="annonce.lieuRetrait" #lieuRetrait="ngModel">
+                      <div [hidden]="lieuRetrait.valid" class="alert alert-warning">
+                        Merci de renseigner le lieu de retrait du véhicule
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-                  <div>
-                    <label for="lieuRestitution">Lieu de restitution du véhicule</label>
-                    <input type="text" class="form-control" id="lieuRestitution" name="lieuRestitution" required
-                      [(ngModel)]="annonce.lieuRestitution" #lieuRestitution="ngModel">
-                    <div [hidden]="lieuRestitution.valid" class="alert alert-warning">
-                      Merci de renseigner le lieu de restitution du véhicule
+                    <!-- Lieu de restitution -->
+                    <div>
+                      <label for="lieuRestitution">Lieu de restitution du véhicule</label>
+                      <input type="text" class="form-control" id="lieuRestitution" name="lieuRestitution" required
+                        [(ngModel)]="annonce.lieuRestitution" #lieuRestitution="ngModel">
+                      <div [hidden]="lieuRestitution.valid" class="alert alert-warning">
+                        Merci de renseigner le lieu de restitution du véhicule
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
-                  <div>
-                    <label for="prixJourLocation">Prix de la location à la journée</label>
-                    <input type="number" class="form-control" id="prixJourLocation" name="prixJourLocation" required
-                      [(ngModel)]="annonce.prixJourLocation" #prixJourLocation="ngModel">
-                    <div [hidden]="prixJourLocation.valid" class="alert alert-warning">
-                      Merci de renseigner le prix de la location pour une journée
+                    <!-- Prix location/jour -->
+                    <div>
+                      <label for="prixJourLocation">Prix de la location à la journée</label>
+                      <input type="number" class="form-control" id="prixJourLocation" name="prixJourLocation" required
+                        [(ngModel)]="annonce.prixJourLocation" #prixJourLocation="ngModel">
+                      <div [hidden]="prixJourLocation.valid" class="alert alert-warning">
+                        Merci de renseigner le prix de la location pour une journée
+                      </div>
                     </div>
-                  </div>
-                  <br>
+                    <br>
 
+                    <!-- Carburant -->
+                    <label for="carburant">Renseigner le carburant souhaité</label>
+                    <div class="form-row align-items-center">
+                      <div class="col-auto my-1">
 
-                  <label for="carburant">Renseigner le carburant souhaité</label>
-                  <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
-
-                      <select class="custom-select mr-sm-2" id="carburant" required [(ngModel)]="annonce.carburant"
-                        name="carburant" #carburant="ngModel">
-                        <option></option>
-                        <option *ngFor="let carburant of carburantList" [value]="carburant.id"> {{carburant.nom}}
-                        </option>
-                      </select>
-                      <div class="alert alert-warning" *ngIf="!carburant.valid">Merci de renseigner un carburant</div>
+                        <select class="custom-select mr-sm-2" id="carburant" required [(ngModel)]="annonce.carburant"
+                          name="carburant" #carburant="ngModel">
+                          <option></option>
+                          <option *ngFor="let carburant of carburantList" [value]="carburant.id"> {{carburant.nom}}
+                          </option>
+                        </select>
+                        <div class="alert alert-warning" *ngIf="!carburant.valid">Merci de renseigner un carburant</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <label for="typeVehicule">Renseigner le type de vehicule souhaité</label>
-                  <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
+                    <!-- Type de véhicule -->
+                    <label for="typeVehicule">Renseigner le type de vehicule souhaité</label>
+                    <div class="form-row align-items-center">
+                      <div class="col-auto my-1">
 
-                      <select class="custom-select mr-sm-2" id="typeVehicule" required
-                        [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
-                        <option></option>
-                        <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
-                          {{typeVehicule.nom}}</option>
-                      </select>
-                      <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner un type de
-                        Vehicule</div>
+                        <select class="custom-select mr-sm-2" id="typeVehicule" required
+                          [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
+                          <option></option>
+                          <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
+                            {{typeVehicule.nom}}</option>
+                        </select>
+                        <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner un type de
+                          Vehicule</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <label for="typeVehicule">Renseigner le nbr de roues souhaité</label>
-                  <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
+                    <!-- Nbre de roues -->
+                    <label for="typeVehicule">Renseigner le nbr de roues souhaité</label>
+                    <div class="form-row align-items-center">
+                      <div class="col-auto my-1">
 
-                      <select class="custom-select mr-sm-2" id="typeVehicule" required
-                        [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
-                        <option></option>
-                        <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
-                          {{typeVehicule.nbrRoues}}</option>
-                      </select>
-                      <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner un type de
-                        Vehicule</div>
+                        <select class="custom-select mr-sm-2" id="typeVehicule" required
+                          [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
+                          <option></option>
+                          <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
+                            {{typeVehicule.nbrRoues}}</option>
+                        </select>
+                        <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner un type de
+                          Vehicule</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <label for="typeVehicule">Renseigner si le véhicule est à moteur</label>
-                  <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
+                    <!-- A moteur? -->
+                    <label for="typeVehicule">Renseigner si le véhicule est à moteur</label>
+                    <div class="form-row align-items-center">
+                      <div class="col-auto my-1">
 
-                      <select class="custom-select mr-sm-2" id="typeVehicule" required
-                        [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
-                        <option></option>
-                        <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
-                          {{typeVehicule.aMoteur}}</option>
-                      </select>
-                      <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner si le véhicule
-                        est à moteur</div>
+                        <select class="custom-select mr-sm-2" id="typeVehicule" required
+                          [(ngModel)]="annonce.typeVehicule" name="typeVehicule" #typeVehicule="ngModel">
+                          <option></option>
+                          <option *ngFor="let typeVehicule of typeVehiculeList" [value]="typeVehicule.id">
+                            {{typeVehicule.aMoteur}}</option>
+                        </select>
+                        <div class="alert alert-warning" *ngIf="!typeVehicule.valid">Merci de renseigner si le véhicule
+                          est à moteur</div>
+                      </div>
                     </div>
-                  </div>
 
-                  <label for="modele">Renseigner le modèle</label>
-                  <div class="form-row align-items-center">
-                    <div class="col-auto my-1">
+                    <!-- Modèle -->
+                    <label for="modele">Renseigner le modèle</label>
+                    <div class="form-row align-items-center">
+                      <div class="col-auto my-1">
 
-                      <select class="custom-select mr-sm-2" id="modele" required
-                        [(ngModel)]="annonce.modele" name="modele" #modele="ngModel">
-                        <option></option>
-                        <option *ngFor="let modele of modeleList" [value]="modele.id">
-                          {{modele.nom}}</option>
-                      </select>
-                      <div class="alert alert-warning" *ngIf="!modele.valid">Merci de renseigner le modèle</div>
+                        <select class="custom-select mr-sm-2" id="modele" required [(ngModel)]="annonce.modele"
+                          name="modele" #modele="ngModel">
+                          <option></option>
+                          <option *ngFor="let modele of modeleList" [value]="modele.id">
+                            {{modele.nom}}</option>
+                        </select>
+                        <div class="alert alert-warning" *ngIf="!modele.valid">Merci de renseigner le modèle</div>
+                      </div>
                     </div>
-                  </div>
 
 
-                  <!-- photo1 -->
-                  <label for="photo1">Image 1</label>
-                  <input type="file" class="form-control" name="photo1" id="photo1" required
-                       #photo1 (change)="onFileChange($event)"> <br>
-                  <div [hidden]="photo1.valid" class="alert alert-danger">
-                  L'image est requise
-                  </div>
+                    <!-- photo1 -->
+                    <label for="photo1">Image 1</label>
+                    <input type="file" class="form-control" name="photo1" id="photo1" required #photo1
+                      (change)="onFileChange1($event)"> <br>
+                    <div [hidden]="photo1.valid" class="alert alert-danger">
+                      L'image est requise
+                    </div>
 
-                  <!-- photo2 -->
-                  <label for="photo2">Image 2</label>
-                  <input type="file" class="form-control" name="photo2" id="photo2" required
-                       #photo2 (change)="onFileChange($event)"> <br>
-                  <div [hidden]="photo2.valid" class="alert alert-danger">
-                  L'image est requise
-                  </div>
+                    <!-- photo2 -->
+                    <label for="photo2">Image 2</label>
+                    <input type="file" class="form-control" name="photo2" id="photo2" required #photo2
+                      (change)="onFileChange2($event)"> <br>
+                    <div [hidden]="photo2.valid" class="alert alert-danger">
+                      L'image est requise
+                    </div>
 
-                  <!-- photo3 -->
-                  <label for="photo3">Image 3</label>
-                  <input type="file" class="form-control" name="photo3" id="photo3" required
-                       #photo3 (change)="onFileChange($event)"> <br>
-                  <div [hidden]="photo3.valid" class="alert alert-danger">
-                  L'image est requise
-                  </div>
-
-
-                  <input class="btn-lg btn-outline-dark" [disabled]="!annonceForm.valid" id="submitAnnonce" type="submit" value="envoyer">
-
-                </form>
+                    <!-- photo3 -->
+                    <label for="photo3">Image 3</label>
+                    <input type="file" class="form-control" name="photo3" id="photo3" required #photo3
+                      (change)="onFileChange3($event)"> <br>
+                    <div [hidden]="photo3.valid" class="alert alert-danger">
+                      L'image est requise
+                    </div>
 
 
+                    <input class="btn-lg btn-outline-dark" [disabled]="!annonceForm.valid" id="submitAnnonce"
+                      type="submit" value="envoyer">
 
+                  </form>
+
+
+
+                </div>
               </div>
             </div>
           </div>

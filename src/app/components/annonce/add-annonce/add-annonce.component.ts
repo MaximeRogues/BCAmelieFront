@@ -23,7 +23,9 @@ export class AddAnnonceComponent implements OnInit {
   carburantList: Carburant[];  //récupère ma liste de carburant, pour les mettre dans un tableau
   modeleList: Modele[];
   typeVehiculeList: TypeVehicule[];
-  file: File;
+  file1: File;
+  file2: File;  
+  file3: File;
   validPhoto: boolean = false;
   validFileTypes = ["image/jpeg", "image/png", "image/jpg"];
 
@@ -48,25 +50,48 @@ export class AddAnnonceComponent implements OnInit {
     this.isLoading = false;
   }
 
-  onFileChange(event) {
-    this.file = event.target.files[0];
-    if(this.validFileTypes.includes(this.file.type)) {
-      this.validPhoto = true;
+  onFileChange1(event) {
+    this.file1 = event.target.files[0];                     //récupère dans un tableau, le file et le stock dans "file"
+    if(this.validFileTypes.includes(this.file1.type)) {    //si validFileTypes est bon, alors on récupère le "file"
+      this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
     }
   }
 
+  onFileChange2(event) {
+    this.file2 = event.target.files[0];                     //récupère dans un tableau, le file et le stock dans "file"
+    if(this.validFileTypes.includes(this.file2.type)) {    //si validFileTypes est bon, alors on récupère le "file"
+      this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
+    }
+  }
+
+  onFileChange3(event) {
+    this.file3 = event.target.files[0];                     //récupère dans un tableau, le file et le stock dans "file"
+    if(this.validFileTypes.includes(this.file3.type)) {    //si validFileTypes est bon, alors on récupère le "file"
+      this.validPhoto = true;                             //la photo initialisé à false, devien true, car valide
+    }
+  }
 
   addAnnonce(): void {
-    if(this.file == undefined || this.file == null || !this.validFileTypes.includes(this.file.type) ) {
-      alert("Format d'image non valide, veuillez utiliser un fichier jpg ou png");
-      window.location.reload();
-      return;
-    }
-    let formData = new FormData();
-    formData.append('file', this.file);
-    this.annonce.photo1 = this.file.name;
-    
-    this.upload.uploadFile(formData);
+    //if(this.file == undefined || this.file == null || !this.validFileTypes.includes(this.file.type) ) {    //check si format valide
+    //  alert("Format d'image non valide, veuillez utiliser un fichier jpg, jpeg ou png");
+    //  window.location.reload();
+    //  return;
+    //}
+    let formData1 = new FormData();               //on créer notre contenant 
+    formData1.append('file', this.file1);  
+    this.annonce.photo1 = this.file1.name;  
+    this.upload.uploadFile(formData1);
+
+    let formData2 = new FormData();  
+    formData2.append('file', this.file2); 
+    this.annonce.photo2 = this.file2.name;
+    this.upload.uploadFile(formData2);
+
+    let formData3 = new FormData();  
+    formData3.append('file', this.file3);          //
+    this.annonce.photo3 = this.file3.name;  
+    this.upload.uploadFile(formData3);            //appelle le fonction uploadFile, qui pousse l'element en BDD 
+
     this.annonceService.addAnnonce(this.annonce).subscribe(data => {  
     this.router.navigate(['/annonces/list']); // Redirection de l'utilisateur
       // this.toastr.success("L'annonce a bien été ajoutée !"); // On affiche une notification

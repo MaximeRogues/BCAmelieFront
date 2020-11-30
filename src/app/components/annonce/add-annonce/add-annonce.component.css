@@ -6,12 +6,6 @@
 .card{
   padding: 80px;
 }
-
-h1{
-  margin-top:150px;
-}
-
-
 /* Bouton */
 
 .animated-border-button {
@@ -82,4 +76,23 @@ h1{
 
 .bouncing-loader > div:nth-child(3) {
   animation-delay: 0.4s;
+}
+
+/* Background */
+.bloc1{
+  background: url(../../../../assets/images/texture-bloc.jpg) center top repeat;
+  padding-bottom: 300px;
+  padding-top: 100px;
+}
+
+
+.btnRetour{
+  margin-left:860px !important;
+  font-size: 20px;
+}
+
+h1{
+  padding-bottom: 47px;
+  font-size: 3rem;
+  padding-top: 100px;
 }

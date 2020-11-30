@@ -28,7 +28,7 @@
       <div *ngFor="let annonce of annonces" class="col-xl-6 col-md-6 mb-4">
         <div class="card border-0 shadow">
           <figure class=" cardImage hover-menu">
-            <img src="https://get.pxhere.com/photo/car-red-vehicle-auto-historic-old-car-sports-car-ford-convertible-antique-car-retro-car-the-vehicle-antique-auto-old-auto-land-vehicle-automobile-make-executive-car-542905.jpg" class="card-img-top" alt="...">
+             <img src="http://localhost:8000/images/{{ annonce.photo1 }}" alt="voiture">
             <div>
               <a [routerLink]="['/annonces/detail', annonce.id]">En voir +</a>
               <a [routerLink]="['/annonces/edit', annonce.id]">Modifier</a>

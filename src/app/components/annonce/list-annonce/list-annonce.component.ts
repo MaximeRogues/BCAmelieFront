@@ -28,7 +28,6 @@ export class ListAnnonceComponent implements OnInit {
     this.annonceService.deleteAnnonce(id).subscribe(data => {
       this.router.navigate(['annonces/list']);  // on redirige l'utilisateur
   }); 
-  // this.toastr.success('Ajoutez un siège sur l\'Olympe !','Quoi ?! Un nouveau dieu !')
 }
    
 

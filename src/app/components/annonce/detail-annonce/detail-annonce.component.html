@@ -8,7 +8,7 @@
   <div class="detailAnnonce">
     <h3 class="card-title text-center">{{ annonces.titre }}</h3>
 
-    <div class="container mt-3">
+    <div class="container">
       <div id="bootstrapCarousel" class="carousel slide" data-ride="carousel" data-interval="10">
         <div class="carousel-inner">
 
@@ -21,7 +21,7 @@
           <div class=" bordure">
 
             <br>
-
+            
             <p><strong>Petite description pour en savoir plus:</strong> <br> {{ annonces.descriptionComplete}}</p>
             <br>
 
@@ -29,6 +29,7 @@
             <p><strong>Lieu de restitution:</strong> {{ annonces.lieuRestitution}}</p>
 
             <br>
+            
             <p><strong>Marque: </strong>{{ annonces.modele.marque.nom }}</p>
             <p><strong>Modèle: </strong>{{ annonces.modele.nom }}</p>
             <p><strong>Nombre de km: </strong>{{ annonces.nombreDeKm }}</p>
@@ -45,7 +46,7 @@
           </div>
         </div>
 
-        <a class="animated-border-button" [routerLink]="['/annonces/list']">Revenir à ma sélection</a>
+        <a class="animated-border-button btnRetour" [routerLink]="['/annonces/list']">Revenir à ma sélection</a>
 
 
       </div>

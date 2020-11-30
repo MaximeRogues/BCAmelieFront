@@ -21,6 +21,7 @@ export class EditAnnonceComponent implements OnInit {
   carburantList: Carburant[];  //récupère ma liste de carburant, pour les mettre dans un tableau
   modeleList: Modele[];
   typeVehiculeList: TypeVehicule[];
+  file: File;
 
   constructor(private annonceService: AnnonceService, private activatedRoute:ActivatedRoute, private router: Router, private carburantService:CarburantService, private typeVehiculeService:TypeVehiculeService, private modeleService:ModeleService  ) { }
 
@@ -47,9 +48,20 @@ ngOnInit(): void {
   }); 
 }
 
+onFileChange(event) {
+  this.file = event.target.files[0];
+  console.log('Image récupérée : ' + this.file.name);
+}
 
 //Appelle notre service pour éditer l'annonce
 editAnnonce(): void {
+
+  let formData = new FormData();
+  formData.append('file', this.file);
+  this.annonce.photo1 = this.file.name;        //
+  this.annonce.photo2 = this.file.name;  
+  this.annonce.photo3 = this.file.name;  
+
  this.annonceService.editAnnonce(this.annonce).subscribe(data => {
    this.router.navigate(['annonces/list']);  // on redirige l'utilisateur
    }); 
